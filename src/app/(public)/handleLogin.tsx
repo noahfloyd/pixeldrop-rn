@@ -19,7 +19,7 @@ import { Button, Input, Text, useTheme, View, XStack, YStack } from 'tamagui'
 export default function LoginScreen() {
   const params = useLocalSearchParams<{ server: string }>()
 
-  const [server, setServer] = useState(params.server || 'pixelfed.social')
+  const [server, setServer] = useState(params.server || 'localhost:3000')
   const [loading, setLoading] = useState(false)
   const [searchValue, setSearchValue] = useState('')
   const [isValidDomain, setIsValidDomain] = useState(false)
@@ -86,7 +86,7 @@ export default function LoginScreen() {
   const handleOptionSelect = (option) => {
     setSelectedOption(option)
     if (option === 0) {
-      setServer('pixelfed.social')
+      setServer('localhost:3000')
       setSearchValue('')
       setIsValidDomain(false)
     } else {
@@ -148,8 +148,8 @@ export default function LoginScreen() {
 
   const showHelpInfo = () => {
     Alert.alert(
-      'About Pixelfed',
-      "Pixelfed is a free and open-source photo sharing platform, similar to Instagram but decentralized.\n\nServers (or 'instances') are independently operated communities that connect to the larger Fediverse network. Each server has its own rules, moderators, and focus, but users can interact across servers.\n\npixelfed.social is the main instance, but you can join any Pixelfed server or even self-host your own.",
+      'About Pixeldrop',
+      "Pixeldrop is a free and open-source photo sharing platform, similar to Instagram but decentralized.\n\nServers (or 'instances') are independently operated communities that connect to the larger Fediverse network. Each server has its own rules, moderators, and focus, but users can interact across servers.\n\npixeldrop.social is the main instance, but you can join any Pixeldrop server or even self-host your own.",
       [
         { text: 'Close', style: 'cancel' },
         {
@@ -254,7 +254,7 @@ export default function LoginScreen() {
                   )}
                 </View>
                 <Text color={theme.color?.val.default.val} fontSize="$6">
-                  Log in to pixelfed.social
+                  Log in to pixeldrop.social
                 </Text>
               </Pressable>
 
@@ -317,7 +317,7 @@ export default function LoginScreen() {
                       color={theme.color?.val.default.val}
                       backgroundColor={theme.background?.val.default.val}
                       size="$6"
-                      placeholder="pixelfed.example.com"
+                      placeholder="pixeldrop.example.com"
                       placeholderTextColor="#666"
                       value={searchValue}
                       onChangeText={handleSearchInputChange}
@@ -350,14 +350,14 @@ export default function LoginScreen() {
                     {isValidDomain && searchValue && filteredServers.length === 0 && (
                       <Pressable onPress={handleLogin}>
 
-                      <View style={{ marginTop: 8 }}>
-                        <Text color={theme.color?.val.default.val} fontSize="$6" style={{ paddingVertical: 12 }}>
-                          Continue with{' '}
-                          <Text color={theme.colorHover?.val.active.val} fontWeight="bold">
-                            {searchValue}
+                        <View style={{ marginTop: 8 }}>
+                          <Text color={theme.color?.val.default.val} fontSize="$6" style={{ paddingVertical: 12 }}>
+                            Continue with{' '}
+                            <Text color={theme.colorHover?.val.active.val} fontWeight="bold">
+                              {searchValue}
+                            </Text>
                           </Text>
-                        </Text>
-                      </View>
+                        </View>
                       </Pressable>
                     )}
                   </View>

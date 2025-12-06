@@ -32,7 +32,7 @@ export default function Login() {
       />
       <YStack w="100%" px="$5">
         <Text fontSize={30} my="$6" letterSpacing={-1} color="white">
-          Pixelfed Sign in
+          Pixeldrop Sign in
         </Text>
         <Form gap="$5" onSubmit={handleLogin}>
           <YStack>
@@ -44,7 +44,7 @@ export default function Login() {
               theme="dark"
               themeInverse={true}
               value={server}
-              placeholder="pixelfed.social"
+              placeholder="pixeldrop.social"
               onChangeText={setServer}
               autoCapitalize="none"
               borderWidth={2}

@@ -165,7 +165,7 @@ const DetailsStep = ({ onSubmit, isLoading, domain, code, email, setLoading }) =
             Storage.set('app.client_id', res.client_id.toString())
             Storage.set('app.client_secret', res.client_secret)
             Storage.set('app.instance', res.domain)
-            Storage.set('app.name', 'Pixelfed')
+            Storage.set('app.name', 'Pixeldrop')
             Storage.set('app.redirect_uri', 'pixelfed://login')
             onSubmit({ username, password, displayName, domain, authToken })
           } else {
@@ -325,7 +325,7 @@ const WelcomeStep = ({ onSubmit, isLoading, domain }) => {
   return (
     <View style={styles.stepContainer}>
       <Text style={[styles.title, { color: theme.color?.val.default.val }]}>
-        Welcome to Pixelfed!
+        Welcome to Pixeldrop!
       </Text>
       <Text style={[styles.subtitle, { color: theme.color?.val.tertiary.val }]}>
         Let's personalize your profile
@@ -422,7 +422,7 @@ const SignUp = ({ navigation }) => {
       toValue: -width * (currentStep + 1),
       duration: 300,
       useNativeDriver: true,
-    }).start(() => {})
+    }).start(() => { })
   }
 
   const handleVerificationSubmit = async (_code) => {

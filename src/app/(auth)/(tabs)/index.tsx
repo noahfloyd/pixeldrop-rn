@@ -8,8 +8,11 @@ import {
   ActivityIndicator,
   FlatList,
   type ListRenderItemInfo,
+  RefreshControl,
   StyleSheet,
 } from 'react-native'
+import Animated, { useAnimatedScrollHandler, useSharedValue } from 'react-native-reanimated'
+import DropRefreshControl from 'src/components/common/DropRefreshControl'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import EmptyFeed from 'src/components/common/EmptyFeed'
 import ErrorFeed from 'src/components/common/ErrorFeed'
@@ -96,7 +99,7 @@ export function ErrorBoundary(props: ErrorBoundaryProps) {
 export default function HomeScreen() {
   const router = useRouter()
   const navigation = useNavigation()
-  const flatListRef = useRef<FlatList>(null)
+  const flatListRef = useRef<Animated.FlatList<Status>>(null)
   const queryClient = useQueryClient()
   const { hasShareIntent } = useShareIntentContext()
   const params = useLocalSearchParams()
@@ -105,6 +108,13 @@ export default function HomeScreen() {
   const user = useUserCache()
   const { playVideo, currentVideoId } = useVideo()
   const hideStories = Storage.getBoolean('ui.hideStories') == true
+
+  const scrollY = useSharedValue(0)
+  const scrollHandler = useAnimatedScrollHandler({
+    onScroll: (event) => {
+      scrollY.value = event.contentOffset.y
+    },
+  })
 
   const {
     isPending: mutateIsPending,
@@ -416,15 +426,27 @@ export default function HomeScreen() {
       <Stack.Screen options={{ headerShown: false }} />
       <FeedHeader title="Pixeldrop" user={user} />
 
-      <FlatList
+      <Animated.FlatList
         ref={flatListRef}
         data={feedData}
         keyExtractor={keyExtractor}
         renderItem={renderItem}
         ListHeaderComponent={EnhancedListHeader}
         {...FLAT_LIST_OPTIMIZATION}
+        // Custom Refresh Logic
         refreshing={isRefetching}
         onRefresh={refetch}
+        onScroll={scrollHandler}
+        scrollEventThrottle={16}
+        refreshControl={
+          <RefreshControl
+            refreshing={isRefetching}
+            onRefresh={refetch}
+            tintColor="transparent"
+            colors={['transparent']}
+            style={{ backgroundColor: 'transparent' }}
+          />
+        }
         showsVerticalScrollIndicator={false}
         ListEmptyComponent={ListEmptyComponent}
         onViewableItemsChanged={onViewableItemsChanged}
@@ -436,6 +458,7 @@ export default function HomeScreen() {
           minIndexForVisible: 0,
         }}
       />
+      <DropRefreshControl refreshing={isRefetching} scrollY={scrollY} />
     </SafeAreaView>
   )
 }

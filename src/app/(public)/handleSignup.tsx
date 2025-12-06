@@ -20,7 +20,7 @@ import { prettyCount } from 'src/utils'
 import { Button, Image, ScrollView, Text, useTheme, View, XStack, YStack } from 'tamagui'
 
 export default function SignupScreen() {
-  const [server, setServer] = useState('pixelfed.social')
+  const [server, setServer] = useState('localhost:3000')
   const [loading, setLoading] = useState(false)
   const [showInfo, setShowInfo] = useState(false)
   const [_showServerInfo, _setShowServerInfo] = useState(false)
@@ -50,11 +50,11 @@ export default function SignupScreen() {
       } catch (_error) {
         return [
           {
-            domain: 'pixelfed.social',
+            domain: 'localhost:3000',
             header_thumbnail: 'https://pixelfed.org/storage/servers/header.png',
             version: '0.12.4',
             short_description:
-              'The original Pixelfed instance, operated by the main developer @dansup',
+              'The original Pixeldrop instance, operated by the main developer @dansup',
             rules: [],
             user_count: 420069,
             last_seen_at: getNowTimestamp(),
@@ -81,11 +81,11 @@ export default function SignupScreen() {
     if (!serversData)
       return [
         {
-          domain: 'pixelfed.social',
+          domain: 'localhost:3000',
           header_thumbnail: 'https://pixelfed.org/storage/servers/header.png',
           version: '0.12.4',
           short_description:
-            'The original Pixelfed instance, operated by the main developer @dansup',
+            'The original Pixeldrop instance, operated by the main developer @dansup',
           rules: [],
           user_count: 420069,
           last_seen_at: getNowTimestamp(),
@@ -279,7 +279,7 @@ export default function SignupScreen() {
                   mb="$3"
                   allowFontScaling={false}
                 >
-                  Pixelfed is a decentralized photo sharing platform. To join, you'll need
+                  Pixeldrop is a decentralized photo sharing platform. To join, you'll need
                   to:
                 </Text>
                 <Text
@@ -312,7 +312,7 @@ export default function SignupScreen() {
                   mt="$2"
                   allowFontScaling={false}
                 >
-                  Your account will work across all of Pixelfed, regardless of which
+                  Your account will work across all of Pixeldrop, regardless of which
                   server you join
                 </Text>
               </View>

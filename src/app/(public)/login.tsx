@@ -85,7 +85,7 @@ export default function Login() {
             mt={10}
             fontWeight="bold"
           >
-            Pixelfed
+            Pixeldrop
           </Text>
         </View>
 
