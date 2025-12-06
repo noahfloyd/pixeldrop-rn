@@ -1,7 +1,7 @@
 import { Feather } from '@expo/vector-icons'
 import { Link } from 'expo-router'
 import { Platform, Pressable } from 'react-native'
-import { Text, useTheme, XStack } from 'tamagui'
+import { Text, useTheme, View, XStack } from 'tamagui'
 
 export default function FeedHeader({ title = 'Home', user }) {
   const theme = useTheme()
@@ -21,7 +21,7 @@ export default function FeedHeader({ title = 'Home', user }) {
       <XStack alignItems="center" gap="$1">
         <Text
           color={textColor}
-          fontSize={title === 'Pixelfed' ? 25 : 19}
+          fontSize={title === 'Pixeldrop' ? 25 : 19}
           lineHeight={30}
           fontWeight="bold"
           letterSpacing={-0.5}
@@ -31,12 +31,8 @@ export default function FeedHeader({ title = 'Home', user }) {
         </Text>
       </XStack>
       <XStack gap="$5">
-        {title === 'Pixelfed' ? (
-          <Link href="/feeds/network" asChild>
-            <Pressable hitSlop={12}>
-              <Feather name="globe" size={26} color={textColor} />
-            </Pressable>
-          </Link>
+        {title === 'Pixeldrop' ? (
+          <View />
         ) : (
           <Link href="/" asChild>
             <Pressable hitSlop={12}>

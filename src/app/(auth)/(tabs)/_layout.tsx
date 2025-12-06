@@ -52,11 +52,11 @@ export default function AppLayout() {
       <Tabs.Screen
         name={TabName.Explore}
         options={{
-          tabBarShowLabel: false,
-          headerShown: true,
-          tabBarIcon: ({ color }) => <Feather name="compass" size={26} color={color} />,
+          href: null,
         }}
       />
+
+
 
       <Tabs.Screen
         name={TabName.Camera}

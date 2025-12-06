@@ -23,7 +23,7 @@ export default function Screen() {
   }: Pick<GroupButtonContentProps, 'icon' | 'title'> & { path: string }) => (
     <Group.Item>
       <Button
-        onPress={() => openLink(path)}
+        // onPress={() => openLink(path)}
         bg={theme.background?.val.secondary.val}
         justifyContent="flex-start"
         size="$5"

@@ -402,7 +402,7 @@ export default function HomeScreen() {
         edges={['top']}
       >
         <Stack.Screen options={{ headerShown: false }} />
-        <FeedHeader title="Pixelfed" user={user} />
+        <FeedHeader title="Pixeldrop" user={user} />
         <ErrorFeed />
       </SafeAreaView>
     )
@@ -414,7 +414,7 @@ export default function HomeScreen() {
       edges={['top']}
     >
       <Stack.Screen options={{ headerShown: false }} />
-      <FeedHeader title="Pixelfed" user={user} />
+      <FeedHeader title="Pixeldrop" user={user} />
 
       <FlatList
         ref={flatListRef}

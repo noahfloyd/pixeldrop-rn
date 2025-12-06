@@ -464,7 +464,7 @@ const PostActions = React.memo(
       Alert.alert(
         'Alt Text',
         post?.media_attachments[currentIndex]?.description ??
-          'Media was not tagged with any alt text.'
+        'Media was not tagged with any alt text.'
       )
     }, [progress, post?.media_attachments])
 
@@ -518,22 +518,16 @@ const PostActions = React.memo(
           <XStack gap="$4" justifyContent="space-between">
             <XStack gap="$5">
               <XStack justifyContent="center" alignItems="center" gap="$2">
-                <LikeButton hasLiked={hasLiked} handleLike={handleLike} />
+                <LikeButton
+                  hasLiked={hasLiked}
+                  handleLike={handleLike}
+                  onLongPress={() => {
+                    // @ts-ignore
+                    router.push(`/post/likes/${post.id}`)
+                  }}
+                />
                 {isLikePending ? (
                   <ActivityIndicator color={theme.color?.val.default.val} />
-                ) : null}
-                {!isLikePending && likesCount ? (
-                  <Link href={`/post/likes/${post.id}`} asChild>
-                    <Pressable hitSlop={{ left: 5, right: 20, top: 12, bottom: 12 }}>
-                      <Text
-                        fontWeight={'bold'}
-                        allowFontScaling={false}
-                        color={theme.color?.val.secondary.val}
-                      >
-                        {prettyCount(likesCount)}
-                      </Text>
-                    </Pressable>
-                  </Link>
                 ) : null}
               </XStack>
               <Pressable
@@ -546,48 +540,18 @@ const PostActions = React.memo(
                     size={30}
                     color={theme.color?.val.default.val}
                   />
-                  {commentsCount ? (
-                    <Text
-                      fontWeight={'bold'}
-                      allowFontScaling={false}
-                      fontSize="$2"
-                      color={theme.color?.val.secondary.val}
-                    >
-                      {prettyCount(commentsCount)}
-                    </Text>
-                  ) : null}
+                  <Text
+                    fontWeight={'bold'}
+                    allowFontScaling={false}
+                    fontSize="$2"
+                    color={theme.color?.val.secondary.val}
+                  >
+                  </Text>
                 </XStack>
               </Pressable>
             </XStack>
             <XStack gap="$4">
-              {post.visibility === 'public' ? (
-                <XStack justifyContent="center" alignItems="center" gap="$2">
-                  <PressableOpacity
-                    onPress={handleOnShare}
-                    style={{ marginRight: 5 }}
-                    hitSlop={6}
-                  >
-                    <Feather
-                      name="refresh-cw"
-                      size={28}
-                      color={hasSharedCache ? 'gold' : theme.color?.val.default.val}
-                    />
-                  </PressableOpacity>
-                  {sharesCount ? (
-                    <Link href={`/post/shares/${post.id}`} asChild>
-                      <Pressable hitSlop={{ left: 5, right: 20, top: 12, bottom: 12 }}>
-                        <Text
-                          fontWeight={'bold'}
-                          allowFontScaling={false}
-                          color={theme.color?.val.secondary.val}
-                        >
-                          {prettyCount(shareCountCache)}
-                        </Text>
-                      </Pressable>
-                    </Link>
-                  ) : null}
-                </XStack>
-              ) : null}
+
               {!isLikeFeed && isBookmarkPending ? (
                 <ActivityIndicator color={theme.color?.val.default.val} />
               ) : null}
@@ -699,13 +663,11 @@ const PostCaption = React.memo(
               </ReadMore>
             )}
           </XStack>
-          {commentsCount ? (
-            <Pressable onPress={() => onOpenComments()}>
-              <Text color={theme.color?.val.secondary.val} fontSize="$3">
-                View all {commentsCount} comments
-              </Text>
-            </Pressable>
-          ) : null}
+          <Pressable onPress={() => onOpenComments()}>
+            <Text color={theme.color?.val.secondary.val} fontSize="$3">
+              View all comments
+            </Text>
+          </Pressable>
 
           <XStack justifyContent="flex-start" alignItems="center" gap="$3">
             {visibility == 'public' ? (
@@ -975,7 +937,7 @@ const FeedPost = React.memo(
     const handlePresentModalPress = useCallback(() => {
       bottomSheetModalRef.current?.present()
     }, [])
-    const handleSheetChanges = useCallback((_: number) => {}, [])
+    const handleSheetChanges = useCallback((_: number) => { }, [])
     const renderBackdrop = useCallback(
       (props: BottomSheetBackdropProps) => (
         <BottomSheetBackdrop {...props} disappearsOnIndex={-1} appearsOnIndex={1} />
@@ -1068,7 +1030,7 @@ const FeedPost = React.memo(
         await Share.share({
           message: post.url || post.uri,
         })
-      } catch (_error) {}
+      } catch (_error) { }
     }
     return (
       <View flex={1} style={{ width }}>

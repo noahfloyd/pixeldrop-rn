@@ -29,8 +29,7 @@ export default function Page() {
   }, [navigation])
   const { username, locked } = useUserCache()
   const instance = Storage.getString('app.instance')
-  const buildVersion = 1
-  const version = Application.nativeApplicationVersion + '.' + buildVersion
+  const version = '0.0.1'
 
   const { logout } = useAuth()
 
@@ -122,11 +121,7 @@ export default function Page() {
                 path="/profile/follow-requests/"
               />
             ) : null}
-            <GroupButton
-              icon="tag"
-              title="Followed Hashtags"
-              path="/hashtag/followedTags"
-            />
+
             <GroupButton
               icon="lock"
               title="Privacy & Relationships"
@@ -159,11 +154,6 @@ export default function Page() {
             borderColor={theme.borderColor?.val.default.val}
             separator={<Separator borderColor={theme.borderColor?.val.default.val} />}
           >
-            <GroupButton
-              icon="heart"
-              title="Contributors"
-              path="/settings/contributors/"
-            />
             <GroupButton icon="align-left" title="Legal" path="/settings/legal/" />
             <GroupUrlButton
               icon="trash"

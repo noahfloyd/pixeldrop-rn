@@ -16,6 +16,7 @@ type LikeButtonProps = {
   hasLiked: boolean
   handleLike: () => void
   size?: number
+  onLongPress?: () => void
 }
 
 export default function LikeButton(props: LikeButtonProps) {
@@ -65,7 +66,7 @@ export default function LikeButton(props: LikeButtonProps) {
   }
 
   return (
-    <Pressable onPress={handlePress} hitSlop={4}>
+    <Pressable onPress={handlePress} hitSlop={4} onLongPress={props.onLongPress}>
       <Animated.View style={[StyleSheet.absoluteFillObject, outlineStyle]}>
         <MaterialCommunityIcons
           name={'heart-outline'}

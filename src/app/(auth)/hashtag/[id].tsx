@@ -265,51 +265,6 @@ export default function Page() {
                 </Text>
                 {hashtag?.count > 0 ? (
                   <>
-                    {hashtag.following ? (
-                      <Button
-                        borderColor={theme.borderColor?.val.default.val}
-                        h={35}
-                        bg="transparent"
-                        size="$5"
-                        fontWeight="bold"
-                        color={theme.color?.val.default.val}
-                        alignSelf="stretch"
-                        onPress={onUnfollow}
-                      >
-                        Unfollow
-                      </Button>
-                    ) : (
-                      <Button
-                        bg={theme.colorHover.val.active.val}
-                        h={35}
-                        size="$5"
-                        color="white"
-                        fontWeight="bold"
-                        alignSelf="stretch"
-                        onPress={onFollow}
-                      >
-                        Follow
-                      </Button>
-                    )}
-                    {hashtag.following ? (
-                      <Text
-                        fontSize="$4"
-                        color={theme.color?.val.tertiary.val}
-                        flexWrap="wrap"
-                        allowFontScaling={false}
-                      >
-                        You are following this hashtag
-                      </Text>
-                    ) : (
-                      <Text
-                        fontSize="$2"
-                        color={theme.color?.val.tertiary.val}
-                        flexWrap="wrap"
-                        allowFontScaling={false}
-                      >
-                        Follow to see posts like these in your home feed
-                      </Text>
-                    )}
                   </>
                 ) : null}
               </YStack>
