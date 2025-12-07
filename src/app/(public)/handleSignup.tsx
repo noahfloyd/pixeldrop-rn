@@ -20,7 +20,7 @@ import { prettyCount } from 'src/utils'
 import { Button, Image, ScrollView, Text, useTheme, View, XStack, YStack } from 'tamagui'
 
 export default function SignupScreen() {
-  const [server, setServer] = useState('localhost:3000')
+  const [server, setServer] = useState('pixeldrop.social')
   const [loading, setLoading] = useState(false)
   const [showInfo, setShowInfo] = useState(false)
   const [_showServerInfo, _setShowServerInfo] = useState(false)
@@ -50,7 +50,7 @@ export default function SignupScreen() {
       } catch (_error) {
         return [
           {
-            domain: 'localhost:3000',
+            domain: 'pixeldrop.social',
             header_thumbnail: 'https://pixelfed.org/storage/servers/header.png',
             version: '0.12.4',
             short_description:
@@ -81,7 +81,7 @@ export default function SignupScreen() {
     if (!serversData)
       return [
         {
-          domain: 'localhost:3000',
+          domain: 'pixeldrop.social',
           header_thumbnail: 'https://pixelfed.org/storage/servers/header.png',
           version: '0.12.4',
           short_description:

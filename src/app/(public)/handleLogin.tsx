@@ -19,7 +19,7 @@ import { Button, Input, Text, useTheme, View, XStack, YStack } from 'tamagui'
 export default function LoginScreen() {
   const params = useLocalSearchParams<{ server: string }>()
 
-  const [server, setServer] = useState(params.server || 'localhost:3000')
+  const [server, setServer] = useState(params.server || 'pixeldrop.social')
   const [loading, setLoading] = useState(false)
   const [searchValue, setSearchValue] = useState('')
   const [isValidDomain, setIsValidDomain] = useState(false)
@@ -86,7 +86,7 @@ export default function LoginScreen() {
   const handleOptionSelect = (option) => {
     setSelectedOption(option)
     if (option === 0) {
-      setServer('localhost:3000')
+      setServer('pixeldrop.social')
       setSearchValue('')
       setIsValidDomain(false)
     } else {
