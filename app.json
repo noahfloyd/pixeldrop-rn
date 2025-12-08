@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "Pixelfed",
-    "slug": "pixelfed",
+    "name": "Pixeldrop",
+    "slug": "pixeldrop",
     "version": "1.8.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "scheme": "pixelfed",
+    "scheme": "pixeldrop",
     "userInterfaceStyle": "automatic",
     "splash": {
       "image": "./assets/adaptive-icon.png",
@@ -31,7 +31,7 @@
       "infoPlist": {
         "NSCameraUsageDescription": "$(PRODUCT_NAME) needs access to your Camera.",
         "NSMicrophoneUsageDescription": "$(PRODUCT_NAME) needs access to your Microphone.",
-        "NSLocationWhenInUseUsageDescription": "Pixelfed may use your location to provide location-based features or improve user experience."
+        "NSLocationWhenInUseUsageDescription": "Pixeldrop may use your location to provide location-based features or improve user experience."
       }
     },
     "android": {
@@ -67,7 +67,7 @@
             "NSExtensionActivationSupportsImageWithMaxCount": 1,
             "NSExtensionActivationSupportsMovieWithMaxCount": 0
           },
-          "iosShareExtensionName": "Pixelfed Share",
+          "iosShareExtensionName": "Pixeldrop Share",
           "androidIntentFilters": [
             "image/*"
           ]
@@ -82,9 +82,9 @@
       [
         "react-native-vision-camera",
         {
-          "cameraPermissionText": "Pixelfed needs camera access so you can take photos and share them on your Pixelfed timeline. This allows you to capture and post new pictures directly through the app.",
+          "cameraPermissionText": "Pixeldrop needs camera access so you can take photos and share them on your Pixeldrop timeline. This allows you to capture and post new pictures directly through the app.",
           "enableMicrophonePermission": true,
-          "microphonePermissionText": "Pixelfed needs microphone access to allow you to record and add sound to your video posts on Pixelfed. This enables you to capture videos with audio when sharing moments with your followers."
+          "microphonePermissionText": "Pixeldrop needs microphone access to allow you to record and add sound to your video posts on Pixeldrop. This enables you to capture videos with audio when sharing moments with your followers."
         }
       ],
       [
